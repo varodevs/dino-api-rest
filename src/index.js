@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@dino-api-rest.acirv.mongodb.net/?retryWrites=true&w=majority&appName=${process.env.MONGODB_PASSWORD}`,{})
+mongoose.connect(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@dino-api-rest.acirv.mongodb.net/?retryWrites=true&w=majority&appName=${process.env.MONGO_ATLAS_DATABASE}`,{})
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => {
         console.error('MongoDB connection error:', err);
