@@ -5,7 +5,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
  
 function fetchAllDinoData() {
     // Fetch data from the API
-    fetch('http://localhost:3000/api/v1/dinos')
+    fetch('https://dino-api-five.vercel.app/api/v1/dinos')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
