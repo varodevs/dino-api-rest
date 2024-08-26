@@ -2,16 +2,10 @@ document.getElementById('fetch-all-data').addEventListener('click', fetchAllDino
 document.getElementById('fetch-sorted-data').addEventListener('click', fetchSortedDinoData);
 document.getElementById('fetch-random-data').addEventListener('click', fetchRandomDinoData);
 document.getElementById('fetch-one-data-name').addEventListener('click', fetchDinoDataByName);
-const host = ""
-if(process.env.NODE_ENV !== "production"){
-    host = process.env.DEV_HOST;
-}else{
-    host = process.env.PROD_HOST;
-}
  
                 function fetchAllDinoData() {
                     // Fetch data from the API
-                    fetch(`${host}/api/v1/dinos`)
+                    fetch('https://dino-api-five.vercel.app/api/v1/dinos')
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -43,7 +37,7 @@ if(process.env.NODE_ENV !== "production"){
 
                 function fetchSortedDinoData() {
                     // Fetch data from the API
-                    fetch(`${host}/api/v1/dinos/sorted`)
+                    fetch('https://dino-api-five.vercel.app/api/v1/dinos/sorted')
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -75,7 +69,7 @@ if(process.env.NODE_ENV !== "production"){
 
                 function fetchRandomDinoData() {
                     // Fetch data from the API
-                    fetch(`${host}/api/v1/dinos/random`)
+                    fetch('https://dino-api-five.vercel.app/api/v1/dinos/random')
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -108,7 +102,7 @@ if(process.env.NODE_ENV !== "production"){
 
                     const name = document.getElementById('name').value;
 
-                    fetch(`${host}/api/v1/dinos/name/${name}`)
+                    fetch(`'https://dino-api-five.vercel.app/api/v1/dinos/name/${name}`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
