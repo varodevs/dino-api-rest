@@ -31,9 +31,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                             });
                         })
                         .catch(err => {
-                            response.status(500).json({
-                                error: err
-                            });
+                            console.error('Error fetching data:', err);
                         });
                 }
 
@@ -65,9 +63,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                             });
                         })
                         .catch(err => {
-                            response.status(500).json({
-                                error: err
-                            });
+                            console.error('Error fetching data:', err);
                         });
                 }
 
@@ -98,9 +94,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                             
                         })
                         .catch(err => {
-                            response.status(500).json({
-                                error: err
-                            });
+                            console.error('Error fetching data:', err);
                         });
                 };
 
@@ -108,7 +102,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
 
                     const name = document.getElementById('name').value;
 
-                    fetch(`'https://dino-api-five.vercel.app/api/v1/dinos/name/${name}`)
+                    fetch(`https://dino-api-five.vercel.app/api/v1/dinos/name/${name}`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -133,8 +127,6 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                             
                         })
                         .catch(err => {
-                            response.status(500).json({
-                                error: err
-                            });
+                            console.error('Error fetching data:', err);
                         });
                 }
