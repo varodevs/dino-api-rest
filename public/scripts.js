@@ -31,7 +31,7 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                             });
                         })
                         .catch(err => {
-                            console.error('Error fetching data:', err);
+                            console.error('Error fetching data:', err.json());
                         });
                 }
 
