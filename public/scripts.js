@@ -30,8 +30,10 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                                 dinoDataDiv.appendChild(dinoItem);
                             });
                         })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
+                        .catch(err => {
+                            response.status(500).json({
+                                error: err
+                            });
                         });
                 }
 
@@ -62,8 +64,10 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                                 dinoDataDiv.appendChild(dinoItem);
                             });
                         })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
+                        .catch(err => {
+                            response.status(500).json({
+                                error: err
+                            });
                         });
                 }
 
@@ -93,8 +97,10 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                                 dinoDataDiv.appendChild(dinoItem);
                             
                         })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
+                        .catch(err => {
+                            response.status(500).json({
+                                error: err
+                            });
                         });
                 };
 
@@ -126,7 +132,9 @@ document.getElementById('fetch-one-data-name').addEventListener('click', fetchDi
                                 dinoDataDiv.appendChild(dinoItem);
                             
                         })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
+                        .catch(err => {
+                            response.status(500).json({
+                                error: err
+                            });
                         });
                 }
