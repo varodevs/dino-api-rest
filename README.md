@@ -3,7 +3,7 @@
 
 Welcome to the **Dino API** project! This API provides access to a collection of dinosaur data, allowing users to retrieve information about various dinosaurs, create new entries, update existing ones, and delete records. This API is built using Node.js, Express, and MongoDB.
 
-![T-rex](https://files.oaiusercontent.com/file-I6alCj7HtvsJJQTo4sZa1xXO?se=2024-08-26T14%3A09%3A51Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da7b8b46b-d23e-4cb6-9b48-b984b74ffa7a.webp&sig=l/IfzrtlgTfEVbeliGUkrRcFFYMHDkMUWcOGFsQVtnc%3D)
+![T-rex](https://dinosaurland.es/wp-content/uploads/elementor/thumbs/27-Tyrannosaurus-qm421igre950ile329ckf4p99w3nj370rbkeuspb7k.jpeg)
 
 ## Table of Contents
 
