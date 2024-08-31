@@ -1,17 +1,25 @@
 { 
-    "version": 1, 
+    "version": 2, 
     "routes": [
         { 
-            "source": "/", 
-            "destination": "/api/v1"
+            "src": "/", 
+            "dest": "/api/v1"
         },
         { 
-            "source": "/api/v1/dinos",
+            "src": "/api/v1/dinos",
             "methods": [
                 "POST",
                 "GET"
             ],
-            "destination": "/api/v1/dinos.js"
+            "dest": "/api/v1/dinos.js"
+        },
+        {
+           "src": "/api/v1/sample",
+            "methods": [
+                "POST",
+                "GET"
+            ],
+            "dest": "/api/v1/sample.js" 
         }
     ] 
 }
