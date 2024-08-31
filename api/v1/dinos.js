@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 const Dino = require('../../src/database/dino');
 
-const user = process.env.MONGO_ATLAS_USER;
-const password = process.env.MONGO_ATLAS_PASSWORD;
-const cluster = process.env.MONGO_ATLAS_CLUSTER;
-const dbName = process.env.MONGO_ATLAS_DB;
-
-const mongoUri = `mongodb+srv://${user}:${password}@${cluster}${dbName}`;
+const mongoUri = process.env.MONGO_ATLAS_URI;
 
 let cachedDb = null;
 
