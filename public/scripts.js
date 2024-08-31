@@ -2,10 +2,17 @@ document.getElementById('fetch-all-data').addEventListener('click', fetchAllDino
 document.getElementById('fetch-sorted-data').addEventListener('click', fetchSortedDinoData);
 document.getElementById('fetch-random-data').addEventListener('click', fetchRandomDinoData);
 document.getElementById('fetch-one-data-name').addEventListener('click', fetchDinoDataByName);
+window.addEventListener('load', menuLinks);endpointLinks
+window.addEventListener('load', endpointLinks);
+
+function getCurrentURL() {
+    return window.location.href
+  }
  
-async function fetchAllDinoData() {
+ function fetchAllDinoData() {
+
     // Fetch data from the API
-    await fetch('https://dino-api-five.vercel.app/api/v1/dinos')
+     fetch(`${getCurrentURL()}api/v1/dinos`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
@@ -52,7 +59,7 @@ async function fetchAllDinoData() {
 
                 function fetchSortedDinoData() {
                     // Fetch data from the API
-                    fetch('https://dino-api-five.vercel.app/api/v1/dinos/sorted')
+                    fetch(`${getCurrentURL()}api/v1/sorted`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -84,26 +91,27 @@ async function fetchAllDinoData() {
 
                 function fetchRandomDinoData() {
                     // Fetch data from the API
-                    fetch('https://dino-api-five.vercel.app/api/v1/dinos/random')
+                    fetch(`${getCurrentURL()}api/v1/random`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
+                            console.log(data);
                             const dinoDataDiv = document.getElementById('dino-data');
                             dinoDataDiv.innerHTML = ''; // Clear previous content
-                            
+                                const dinoData = data[0];
                                 const dinoItem = document.createElement('div');
                                 dinoItem.className = 'dino-item';
                                 dinoItem.innerHTML = `
-                            <h3>${data.name}</h3>
-                            <p><strong>description:</strong> ${data.description}</p>
-                            <p><strong>length:</strong> ${data.length}</p>
-                            <p><strong>height:</strong> ${data.height}</p>
-                            <p><strong>weight:</strong> ${data.weight}</p>
-                            <p><strong>diet:</strong> ${data.diet}</p>
-                            <p><strong>geographical distribution:</strong> ${data.geographical_distribution}</p>
-                            <p><strong>period:</strong> ${data.period}</p>
-                            <p><strong>last fossil registry:</strong> ${data.last_fossil_registry}</p>
-                            <p><strong>curiosity:</strong> ${data.curiosity}</p>
+                            <h3>${dinoData.name}</h3>
+                            <p><strong>description:</strong> ${dinoData.description}</p>
+                            <p><strong>length:</strong> ${dinoData.length}</p>
+                            <p><strong>height:</strong> ${dinoData.height}</p>
+                            <p><strong>weight:</strong> ${dinoData.weight}</p>
+                            <p><strong>diet:</strong> ${dinoData.diet}</p>
+                            <p><strong>geographical distribution:</strong> ${dinoData.geographical_distribution}</p>
+                            <p><strong>period:</strong> ${dinoData.period}</p>
+                            <p><strong>last fossil registry:</strong> ${dinoData.last_fossil_registry}</p>
+                            <p><strong>curiosity:</strong> ${dinoData.curiosity}</p>
                         `;
                                 dinoDataDiv.appendChild(dinoItem);
                             
@@ -117,7 +125,7 @@ async function fetchAllDinoData() {
 
                     const name = document.getElementById('name').value;
 
-                    fetch(`https://dino-api-five.vercel.app/api/v1/dinos/name/${name}`)
+                    fetch(`${getCurrentURL()}api/v1/dinos/${name}`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -144,4 +152,45 @@ async function fetchAllDinoData() {
                         .catch(err => {
                             console.error('Error fetching data:', err);
                         });
+                }
+
+                function menuLinks(){
+                    
+                    const url = getCurrentURL()
+
+                    const menuDiv = document.getElementById('menu-div');
+                    menuDiv.innerHTML = '';
+
+                    const links = document.createElement('div');
+                    links.className = 'menu-links';
+                    links.innerHTML =
+                    
+                    links.innerHTML = `
+                <a href="${url}">Home</a>
+                <a href="#">About me(In development)</a>
+                `;
+                menuDiv.appendChild(links);
+                }
+
+                function endpointLinks(){
+                    
+                    const url = getCurrentURL()
+
+                    const contentDiv = document.getElementById('endpoints');
+                    contentDiv.innerHTML = '';
+
+                    const links = document.createElement('ul');
+                    links.className = 'endpoint-links';
+                    links.innerHTML = `
+                <li><a href="${url}api/v1/dinos">GET /dinos - Get all dinosaurs</a></li>
+                <li><a href="${url}api/v1/random">GET /random - Get a random
+                        dinosaur</a>
+                </li>
+                <li><a href="${url}api/v1/sorted">GET /sorted - Get all
+                        dinosaurs
+                        alphabetically sorted</a></li>
+                <li>GET /dinos/by-id/:id - Get a specific dinosaur by id</li>
+                <li>GET /dinos/:name - Get a specific dinosaur by name</li>
+                `;
+                contentDiv.appendChild(links);
                 }

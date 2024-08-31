@@ -59,9 +59,9 @@ const getRandomDino = async () => {
 
     var random = Math.floor(Math.random() * count)
       
-    const allRandom = await Dino.findOne().skip(random).exec();
+    const randomDino = await Dino.aggregate([{ $sample: { size: 1 } }]); //await Dino.findOne().skip(random).exec();
     
-    return allRandom;
+    return randomDino;
 }
 
 module.exports = {

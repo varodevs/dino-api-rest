@@ -35,13 +35,10 @@ module.exports = async (req, res) => {
 
     if (req.method === 'GET') {
       // Optimize query with projection and limit
-      const dinos = await Dino.find()
-        //.select('name')  // Only select necessary fields
-        //.limit(10)       // Limit to 10 records
-        .lean()          // Use lean queries for faster read-only queries
+      const sortedDino = await Dino.find().sort({ name: 1 })
         .exec();
-      
-      return res.status(200).json(dinos);
+      console.log(sortedDino);
+      return res.status(200).json(sortedDino);
     } else {
       return res.status(405).json({ error: 'Method not allowed' });
     }

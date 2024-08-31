@@ -14,12 +14,32 @@
             "dest": "/api/v1/dinos.js"
         },
         {
-           "src": "/api/v1/sample",
+           "src": "/api/v1/random",
             "methods": [
-                "POST",
+                "POST"
+            ],
+            "dest": "/api/v1/random.js" 
+        },
+        {
+           "src": "/api/v1/sorted",
+            "methods": [
                 "GET"
             ],
-            "dest": "/api/v1/sample.js" 
+            "dest": "/api/v1/sorted.js" 
+        },
+        {
+           "src": "/api/v1/dinos/:name",
+            "methods": [
+                "GET"
+            ],
+            "dest": "/api/v1/dinos/:name" 
+        },
+        {
+           "src": "/api/v1/dinos/by-id/:id",
+            "methods": [
+                "GET"
+            ],
+            "dest": "/api/v1/dinos/by-id/:id" 
         }
     ] 
 }

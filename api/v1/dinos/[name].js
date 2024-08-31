@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Dino = require('../../src/database/dino');
+const Dino = require('../../../src/database/dino');
 
 const mongoUri = process.env.MONGO_ATLAS_URI;
 
@@ -29,19 +29,14 @@ const connectDb = async () => {
   return cachedDb;
 };
 
-module.exports = async (req, res) => {
-  try {
+module.exports = async (req, res) => { 
     await connectDb(); // Ensure the database is connected
-
+  try {
     if (req.method === 'GET') {
-      // Optimize query with projection and limit
-      const dinos = await Dino.find()
-        //.select('name')  // Only select necessary fields
-        //.limit(10)       // Limit to 10 records
-        .lean()          // Use lean queries for faster read-only queries
-        .exec();
-      
-      return res.status(200).json(dinos);
+        const { name } = req.query;
+        const regex = new RegExp(name, 'i');
+        const dino = await Dino.findOne({ name: {$regex: regex} });
+      return res.status(200).json(dino);
     } else {
       return res.status(405).json({ error: 'Method not allowed' });
     }

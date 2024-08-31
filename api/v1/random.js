@@ -29,19 +29,16 @@ const connectDb = async () => {
   return cachedDb;
 };
 
-module.exports = async (req, res) => {
-  try {
+module.exports = async (req, res) => { 
     await connectDb(); // Ensure the database is connected
-
+  try {
     if (req.method === 'GET') {
+        const count = await Dino.countDocuments().exec();
+        var random = Math.floor(Math.random() * count)
       // Optimize query with projection and limit
-      const dinos = await Dino.find()
-        //.select('name')  // Only select necessary fields
-        //.limit(10)       // Limit to 10 records
-        .lean()          // Use lean queries for faster read-only queries
-        .exec();
-      
-      return res.status(200).json(dinos);
+      const randomDino = await Dino.aggregate([{ $sample: { size: 1 } }]);
+      console.log(randomDino);
+      return res.status(200).json(randomDino);
     } else {
       return res.status(405).json({ error: 'Method not allowed' });
     }

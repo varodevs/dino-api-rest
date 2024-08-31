@@ -12,12 +12,7 @@
     <div class="container">
         <div class="navbar">
             <h1>Dino API</h1>
-            <div>
-                <a href="https://dino-api-five.vercel.app/">Home</a>
-                <a href="https://dino-api-five.vercel.app/api/v1/">API</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-            </div>
+            <div id="menu-div"></div>
         </div>
         <div class="sidebar">
             <h2>Menu</h2>
@@ -32,19 +27,9 @@
         <div class="content">
             <h1>Welcome to the Dino API</h1>
             <p>This is the homepage of the Dino API.</p>
-            <p>Use the following endpoints to access the API:</p>
+            <p>Use the following endpoints to access the API in JSON format:</p>
+            <ul id="endpoints"></ul>
             <div id="dino-data"></div>
-            <ul>
-                <li><a href="https://dino-api-five.vercel.app/api/v1/dinos">GET /dinos - Get all dinosaurs</a></li>
-                <li><a href="https://dino-api-five.vercel.app/api/v1/dinos/random">GET /dinos/random - Get a random
-                        dinosaur</a>
-                </li>
-                <li><a href="https://dino-api-five.vercel.app/api/v1/dinos/sorted">GET /dinos/name/sorted - Get all
-                        dinosaurs
-                        alphabetically sorted</a></li>
-                <li>GET /dinos/:id - Get a specific dinosaur by id</li>
-                <li>POST /dinos/name/:name - Get a specific dinosaur by name</li>
-            </ul>
         </div>
         <script src="/scripts.js"></script>
 </body>
