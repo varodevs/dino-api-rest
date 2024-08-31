@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
-const MONGO_ATLAS_USER = process.env.MONGO_ATLAS_USER;
-const MONGO_ATLAS_PASSWORD = process.env.MONGO_ATLAS_PASSWORD;
-const MONGO_ATLAS_DATABASE = process.env.MONGO_ATLAS_DATABASE;
+const user = process.env.MONGO_ATLAS_USER;
+const password = process.env.MONGO_ATLAS_PASSWORD;
+const cluster = process.env.MONGO_ATLAS_CLUSTER;
+const dbName = process.env.MONGO_ATLAS_DB;
+
+const mongoUri = `mongodb+srv://${user}:${password}@${cluster}${dbName}`;
 
 const connectDb = async () => {
   if (mongoose.connection.readyState >= 1) return;
 
-  await mongoose.connect(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@dino-api-rest.acirv.mongodb.net/?retryWrites=true&w=majority&appName=${process.env.MONGO_ATLAS_DATABASE}`, {
+  await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
@@ -32,7 +35,7 @@ module.exports = async (req, res) => {
 
       const dinos = await Dino.find()
       .select('name')
-      .limit(50)
+      .limit(1000)
       .exec();
       res.status(200).json(dinos);
     } catch (error) {

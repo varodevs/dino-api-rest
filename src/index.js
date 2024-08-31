@@ -11,7 +11,7 @@ const password = process.env.MONGO_ATLAS_PASSWORD;
 const cluster = process.env.MONGO_ATLAS_CLUSTER;
 const dbName = process.env.MONGO_ATLAS_DB;
 
-const mongoUri = `mongodb+srv://${user}:${password}@${cluster}/${dbName}?retryWrites=true&w=majority`;
+const mongoUri = `mongodb+srv://${user}:${password}@${cluster}${dbName}`;
 
 mongoose.connect(mongoUri,{})
     .then(() => console.log('MongoDB connected successfully'))
