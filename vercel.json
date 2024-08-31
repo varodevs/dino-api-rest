@@ -1,1 +1,17 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
+{ 
+    "version": 1, 
+    "routes": [
+        { 
+            "source": "/", 
+            "destination": "/api/v1"
+        },
+        { 
+            "source": "/api/v1/dinos",
+            "methods": [
+                "POST",
+                "GET"
+            ],
+            "destination": "/api/v1/dinos.js"
+        }
+    ] 
+}
