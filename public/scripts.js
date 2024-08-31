@@ -3,9 +3,9 @@ document.getElementById('fetch-sorted-data').addEventListener('click', fetchSort
 document.getElementById('fetch-random-data').addEventListener('click', fetchRandomDinoData);
 document.getElementById('fetch-one-data-name').addEventListener('click', fetchDinoDataByName);
  
-function fetchAllDinoData() {
+async function fetchAllDinoData() {
     // Fetch data from the API
-    fetch('https://dino-api-five.vercel.app/api/v1/dinos')
+    await fetch('https://dino-api-five.vercel.app/api/v1/dinos')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
