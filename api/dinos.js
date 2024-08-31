@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
 
       const dinos = await Dino.find()
       .select('name')
-      .limit(1000)
+      .limit(10)
       .exec();
       res.status(200).json(dinos);
     } catch (error) {
