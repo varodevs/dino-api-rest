@@ -6,7 +6,14 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@dino-api-rest.acirv.mongodb.net/?retryWrites=true&w=majority&appName=${process.env.MONGO_ATLAS_DATABASE}`,{})
+const user = process.env.MONGO_ATLAS_USER;
+const password = process.env.MONGO_ATLAS_PASSWORD;
+const cluster = process.env.MONGO_ATLAS_CLUSTER;
+const dbName = process.env.MONGO_ATLAS_DB;
+
+const mongoUri = `mongodb+srv://${user}:${password}@${cluster}/${dbName}?retryWrites=true&w=majority`;
+
+mongoose.connect(mongoUri,{})
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => {
         console.error('MongoDB connection error:', err);

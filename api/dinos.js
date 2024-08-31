@@ -30,7 +30,10 @@ module.exports = async (req, res) => {
         curiosity: String
       }));
 
-      const dinos = await Dino.find();
+      const dinos = await Dino.find()
+      .select('name')
+      .limit(50)
+      .exec();
       res.status(200).json(dinos);
     } catch (error) {
       res.status(500).json({ error: 'An error occurred while fetching data.' });
