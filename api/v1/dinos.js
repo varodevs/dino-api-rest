@@ -7,19 +7,19 @@ const dbName = process.env.MONGO_ATLAS_DB;
 
 const mongoUri = `mongodb+srv://${user}:${password}@${cluster}${dbName}`;
 
-const connectDb = async () => {
-
-  if (mongoose.connection.readyState >= 1) return;
-
-  await mongoose.connect(mongoUri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  return mongoose.connection;
-};
-
 module.exports = async (req, res) => {
-  await connectDb();
+  const connectDb = async () => {
+
+    if (mongoose.connection.readyState >= 1) return;
+  
+    await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    return mongoose.connection;
+  };
+
+  console.log(connectDb);
 
   if (req.method === 'GET') {
     try {
