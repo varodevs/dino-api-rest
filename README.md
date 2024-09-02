@@ -18,12 +18,12 @@ Welcome to the **Dino API** project! This API provides access to a collection of
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/dino-api.git
+git clone https://github.com/varodevs/dino-api-rest.git
 ```
 
 Navigate to the project directory:
 ```bash
-cd dino-api
+cd dino-api-rest
 ```
 
 Install the required dependencies:
@@ -33,18 +33,19 @@ npm install
 
 ## Environment Variables
 
-Create a nodemon.json file in the root directory and add the following environment variables:
+To run the api locally with npm run dev (nodemon), create a nodemon.json file in the root directory and add the following environment variables:
 
 ```javascript
     {
         "env": {
-            "MONGO_ATLAS_USER": "your_mongodb_username",
-            "MONGO_ATLAS_PASSWORD": "your_mongodb_password",
-            "MONGODB_HOST": "localhost",
-            "MONGODB_PORT": "27017",
-            "MONGODB_DATABASE": "your_mongodb_database"
+            "MONGO_ATLAS_URI":"your_mongodb_atlas_uri",
         }
     }
+```
+To run the api locally with vercel dev, create a .env file in the root directory and add the following environment variables:
+
+```javascript
+    MONGO_ATLAS_URI=mongodb+srv://<mongodb_atlas_user>:<mongodb_atlas_password>@<mongodb_atlas_cluster>/?retryWrites=true&w=majority&appName=<mongodb_atlas_database>
 ```
 
 These variables are used to configure the server port and MongoDB connection.
@@ -54,32 +55,28 @@ These variables are used to configure the server port and MongoDB connection.
 Public Endpoints
 
 - GET /api/v1/dinos: Retrieve a list of all dinosaurs.
-- GET /api/v1/dinos/:id: Retrieve a specific dinosaur by ID.
-- GET /api/v1/dinos/name/:name: Retrieve a specific dinosaur by name.
-- GET /api/v1/dinos/random: Retrieve a random dinosaur.
-- GET /api/v1/dinos/sorted: Retrieve dinosaurs sorted alphabetically by name.
+- GET /api/v1/dinos/by-id/:id: Retrieve a specific dinosaur by ID.
+- GET /api/v1/dinos/:name: Retrieve a specific dinosaur by name.
+- GET /api/v1/random: Retrieve a random dinosaur.
+- GET /api/v1/sorted: Retrieve dinosaurs sorted alphabetically by name.
 
 ## Usage
 
-Start the development server:
+Start the development server with Express:
 ```bash
 npm run dev
 ```
-Access the Homepage at http://localhost:3000/  
-Access the API at http://localhost:3000/api/v1/
+Access the Homepage at http://localhost:3000/
+
+---
+
+Start the development server with Vercel:
+```bash
+vercel dev --listen <desired-port>
+```
+Access the Homepage at http://localhost:3001/
 
 Use a tool like Postman, Insomnia, or cURL to test the API endpoints.
-
-## Development
-
-Running Locally
-
-Start the server using:
-```bash
-npm run dev
-```
-
-The server will automatically restart when files are changed, thanks to nodemon.
 
 ## Contributing
 
