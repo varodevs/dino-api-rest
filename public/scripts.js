@@ -62,6 +62,7 @@ function getCurrentURL() {
                     fetch(`${getCurrentURL()}api/v1/sorted`)
                         .then(response => response.json())
                         .then(data => {
+                            console.log('Sorted raw response data:', data); // Log the raw response to inspect it
                             // Display the data in the HTML
                             const dinoDataDiv = document.getElementById('dino-data');
                             dinoDataDiv.innerHTML = ''; // Clear previous content

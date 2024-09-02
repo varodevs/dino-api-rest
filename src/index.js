@@ -6,12 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const user = process.env.MONGO_ATLAS_USER;
-const password = process.env.MONGO_ATLAS_PASSWORD;
-const cluster = process.env.MONGO_ATLAS_CLUSTER;
-const dbName = process.env.MONGO_ATLAS_DB;
-
-const mongoUri = `mongodb+srv://${user}:${password}@${cluster}${dbName}`;
+const mongoUri = process.env.MONGO_ATLAS_URI;
 
 mongoose.connect(mongoUri,{})
     .then(() => console.log('MongoDB connected successfully'))

@@ -32,7 +32,7 @@ npm install
 
 ## Environment Variables
 
-To run the api locally with npm run dev (nodemon), create a nodemon.json file in the root directory and add the following environment variables:
+To run the api locally with npm run dev (Express), create a nodemon.json file in the root directory and add the following environment variables:
 
 ```javascript
     {
@@ -58,6 +58,13 @@ Public Endpoints
 - GET /api/v1/dinos/:name: Retrieve a specific dinosaur by name.
 - GET /api/v1/random: Retrieve a random dinosaur.
 - GET /api/v1/sorted: Retrieve dinosaurs sorted alphabetically by name.
+
+Other endpoints (only with Express)
+
+- POST /api/v1/dinos: Create one dinosaur.
+- POST /api/v1/dinos/many: Create many dinosaurs.
+- PATCH /api/v1/dinos/:id: Update one dinosaur.
+- DELETE /api/v1/dinos/:id: Delete one dinosaur.
 
 ## Usage
 
