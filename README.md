@@ -47,7 +47,7 @@ To run the api locally with vercel dev, create a .env file in the root directory
     MONGO_ATLAS_URI=mongodb+srv://<mongodb_atlas_user>:<mongodb_atlas_password>@<mongodb_atlas_cluster>/?retryWrites=true&w=majority&appName=<mongodb_atlas_database>
 ```
 
-This envinronment variable is used to connect Mongodb using Mongoose.
+This environment variable is used to connect Mongodb using Mongoose.
 
 ## API Endpoints
 
