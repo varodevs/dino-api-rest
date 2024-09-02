@@ -11,7 +11,6 @@ Welcome to the **Dino API** project! This API provides access to a collection of
 - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
 - [Usage](#usage)
-- [Development](#development)
 - [Contributing](#contributing)
 
 ## Installation
