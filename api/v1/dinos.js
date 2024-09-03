@@ -20,6 +20,9 @@ const connectDb = async () => {
   cachedDb = await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    connectTimeoutMS: 5_000,
+    socketTimeoutMS: 5_000,
+    serverSelectionTimeoutMS: 5_000,
   })
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => {
