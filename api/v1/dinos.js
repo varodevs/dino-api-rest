@@ -5,7 +5,7 @@ const mongoUri = process.env.MONGO_ATLAS_URI;
 
 let cachedDb = null;
 
-const connectDb = async () => {
+const connectDb = () => {
   // Reuse the cached connection if available
   if (cachedDb) {
     return cachedDb;
@@ -17,7 +17,7 @@ const connectDb = async () => {
     return cachedDb;
   }
 
-  cachedDb = await mongoose.connect(mongoUri, {
+  cachedDb = mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     connectTimeoutMS: 5_000,
