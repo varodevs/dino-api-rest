@@ -139,7 +139,7 @@ function getCurrentURL() {
                         return; // Stop the function execution if the input is invalid
                     }
 
-                    fetch(`${getCurrentURL()}api/v1/dinos/${name}`)
+                    fetch(`${getCurrentURL()}api/v1/dinos/${encodeURIComponent(name)}`)
                         .then(response => response.json())
                         .then(data => {
                             // Display the data in the HTML
@@ -167,6 +167,51 @@ function getCurrentURL() {
                             console.error('Error fetching data:', err);
                         });
                 }
+
+                function fetchDinoDataById() {
+                    const id = document.getElementById('id').value.trim();
+                
+                    // Validation: Ensure the ID is a 24-character hexadecimal string
+                    const idPattern = /^[a-f0-9]{24}$/; // Only lowercase hex characters, length of 24
+                
+                    if (!id) {
+                        alert('Please enter a dinosaur ID.');
+                        return; // Stop the function execution if the input is invalid
+                    }
+                
+                    if (!idPattern.test(id)) {
+                        alert('Invalid ID. Please enter a valid 24-character hexadecimal string.');
+                        return; // Stop the function execution if the input is invalid
+                    }
+                
+                    fetch(`${getCurrentURL()}api/v1/dinos/by-id/${encodeURIComponent(id)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Display the data in the HTML
+                            const dinoDataDiv = document.getElementById('dino-data');
+                            dinoDataDiv.innerHTML = ''; // Clear previous content
+                
+                            const dinoItem = document.createElement('div');
+                            dinoItem.className = 'dino-item';
+                            dinoItem.innerHTML = `
+                                <h3>${data.name}</h3>
+                                <p><strong>Description:</strong> ${data.description}</p>
+                                <p><strong>Length:</strong> ${data.length}</p>
+                                <p><strong>Height:</strong> ${data.height}</p>
+                                <p><strong>Weight:</strong> ${data.weight}</p>
+                                <p><strong>Diet:</strong> ${data.diet}</p>
+                                <p><strong>Geographical Distribution:</strong> ${data.geographical_distribution}</p>
+                                <p><strong>Period:</strong> ${data.period}</p>
+                                <p><strong>Last Fossil Registry:</strong> ${data.last_fossil_registry}</p>
+                                <p><strong>Curiosity:</strong> ${data.curiosity}</p>
+                            `;
+                            dinoDataDiv.appendChild(dinoItem);
+                        })
+                        .catch(err => {
+                            console.error('Error fetching data:', err);
+                        });
+                }
+                
 
                 function menuLinks(){
                     
