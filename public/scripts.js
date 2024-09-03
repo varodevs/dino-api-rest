@@ -124,7 +124,20 @@ function getCurrentURL() {
 
                 function fetchDinoDataByName() {
 
-                    const name = document.getElementById('name').value;
+                    const name = document.getElementById('name').value.trim();
+
+                    // Validation: Ensure the name is not empty and contains only letters and spaces
+                    const namePattern = /^[a-zA-Z\s]+$/; // Only letters and spaces are allowed
+
+                    if (!name) {
+                        alert('Please enter a dinosaur name.');
+                        return; // Stop the function execution if the input is invalid
+                    }
+
+                    if (!namePattern.test(name)) {
+                        alert('Invalid name. Please use only letters and spaces.');
+                        return; // Stop the function execution if the input is invalid
+                    }
 
                     fetch(`${getCurrentURL()}api/v1/dinos/${name}`)
                         .then(response => response.json())
